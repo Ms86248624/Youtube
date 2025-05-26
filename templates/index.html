@@ -1,41 +1,14 @@
 <!DOCTYPE html>
-<<<<<<< HEAD
-<html>
-=======
 <html lang="fa">
->>>>>>> f1df5fb9c81137dd808257a46c961906ff9a554c
 <head>
-    <meta charset="UTF-8">
-    <title>دانلودر یوتیوب</title>
+  <meta charset="UTF-8">
+  <title>دانلودر یوتیوب</title>
 </head>
 <body>
-<<<<<<< HEAD
-    <h2>🎬 YouTube Downloader</h2>
-    <form method="POST" action="/download">
-        <input type="text" name="url" placeholder="لینک ویدیو را وارد کنید" size="50">
-        <button type="submit">دانلود</button>
-    </form>
-=======
-    <h2>🔻 لینک ویدیو را وارد کن:</h2>
-    <form method="POST">
-        <input type="text" name="url" style="width: 60%;" placeholder="https://www.youtube.com/watch?v=..." required>
-        <button type="submit">نمایش کیفیت‌ها</button>
-    </form>
-    <hr>
-    {% if error %}
-        <p style="color:red">{{ error }}</p>
-    {% endif %}
-    {% if formats %}
-        <h3>کیفیت‌های در دسترس:</h3>
-        <ul>
-            {% for f in formats %}
-                <li>
-                    {{ f.format_id }} - {{ f.resolution or f.quality_label or 'بدون رزولوشن' }}
-                    <a href="{{ f.url }}" target="_blank">دانلود</a>
-                </li>
-            {% endfor %}
-        </ul>
-    {% endif %}
->>>>>>> f1df5fb9c81137dd808257a46c961906ff9a554c
+  <h2>🎬 دانلود ویدیوی یوتیوب</h2>
+  <form action="/download" method="POST">
+    <input type="text" name="url" placeholder="لینک ویدیو را وارد کنید" style="width: 300px;" required>
+    <button type="submit">دانلود</button>
+  </form>
 </body>
 </html>
