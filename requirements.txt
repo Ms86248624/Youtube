@@ -1,0 +1,8 @@
+<<<<<<< HEAD
+flask
+yt-dlp
+gunicorn
+=======
+Flask
+yt-dlp
+>>>>>>> f1df5fb9c81137dd808257a46c961906ff9a554c
