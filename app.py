@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request
 import yt_dlp
 import os
 
@@ -8,24 +8,22 @@ app = Flask(__name__)
 def index():
     return render_template('index.html', message=None)
 
-@app.route('/download', methods=['GET', 'POST'])
+@app.route('/download', methods=['POST'])
 def download():
-    if request.method == 'GET':
-        return redirect(url_for('index'))
-
     url = request.form['url']
+
     ydl_opts = {
         'format': 'best',
         'outtmpl': 'downloads/%(title)s.%(ext)s',
+        'cookiesfrombrowser': ('chrome',),  # ← مهم برای استفاده از کوکی مرورگر
     }
 
     try:
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
             info = ydl.extract_info(url, download=True)
-        return render_template('index.html', message=f"✅ ویدیو با موفقیت دانلود شد: {info['title']}")
+        return render_template('index.html', message=f"✅ ویدیو دانلود شد: {info['title']}")
     except Exception as e:
         return render_template('index.html', message=f"❌ خطا در دانلود: {str(e)}")
 
 if __name__ == '__main__':
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host='0.0.0.0', port=port)
+    app.run(debug=True)
